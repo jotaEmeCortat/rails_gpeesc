@@ -73,3 +73,4 @@ end
 
 gem "simple_form"
 gem "faker"
+gem "friendly_id"
