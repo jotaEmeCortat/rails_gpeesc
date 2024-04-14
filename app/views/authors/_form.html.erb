@@ -1,0 +1,8 @@
+<%= simple_form_for author do |f| %>
+  <%= f.input :name %>
+  <%= f.input :academic_degree, collection: Author::DEGREES %>
+  <%= f.input :lattes %>
+  <%= f.input :avatar_img %>
+  <%= f.input :member %>
+  <%= f.button :submit %>
+<% end %>

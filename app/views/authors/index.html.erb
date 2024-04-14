@@ -1,0 +1,43 @@
+<h1>Membros</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <% @authors.each_with_index do |author, index| %>
+      <% if index.even? %>
+        <div class="panel-body">
+          <ul class="basic-list image-list">
+            <li>
+              <img src="<%= author.avatar_img %>" alt="Author's avatar" class="img">
+              <b>
+                <%= link_to author.name, author_path(author) %>
+              </b>
+              <span class="desc">
+                <%= author.academic_degree %>
+              </span>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="col-md-6">
+    <% @authors.each_with_index do |author, index| %>
+      <% if index.odd? %>
+        <div class="panel-body">
+          <ul class="basic-list image-list">
+            <li>
+              <img src="<%= author.avatar_img %>" alt="Author's avatar" class="img">
+              <b>
+                <%= link_to author.name, author_path(author) %>
+              </b>
+              <span class="desc">
+                <%= author.academic_degree %>
+              </span>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

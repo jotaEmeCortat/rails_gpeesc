@@ -8,3 +8,20 @@
 - add bootstrap
 - add simple_form
 - add faker
+- Create author crud
+  ```
+  rails g model author name academic_degree lattes avatar_img member:boolean
+  rails g controller authors
+
+  class Author < ApplicationRecord
+    DEGREES = %w[Associado Mestre Doutor Pós-Doutor]
+    has_many :repositories
+    has_many :publications, through: :repositories
+  end
+  ```
+
+```bash
+rails g model publication title year:integer abstract:text theme category
+rails g model book title year:integer abstract:text cover_img
+rails g model repository author:references publication:references book:references
+```

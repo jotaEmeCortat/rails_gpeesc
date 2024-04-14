@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   end
 
   def members
+    @authors = Author.all
   end
 
   def publications
