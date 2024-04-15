@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_14_190427) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_15_144224) do
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.string "academic_degree"
@@ -32,6 +32,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_14_190427) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "publications", force: :cascade do |t|
+    t.string "title"
+    t.integer "year"
+    t.text "abstract"
+    t.string "theme"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_publications_on_slug", unique: true
   end
 
 end

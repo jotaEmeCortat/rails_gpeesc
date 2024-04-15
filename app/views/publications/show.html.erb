@@ -1,0 +1,20 @@
+<div class="col-8">
+  <div class="search-item mb-3">
+    <h3 class="mb-1">
+      <%= @publication.title %>
+    </h3>
+    <span class="small">
+      <%= @publication.year %>
+    </span>
+    <div class="font-13 text-success mb-3">
+      <%# Authors %>
+    </div>
+    <p class="mb-0 text-muted">
+      Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.
+    </p>
+  </div>
+  <div class="d-flex justify-content-start">
+    <%= link_to 'Editar', edit_publication_path(@publication), class: "btn btn-primary mr-2" %>
+    <%= button_to 'Deletar', @publication, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+  </div>
+</div>
