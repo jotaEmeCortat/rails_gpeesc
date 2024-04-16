@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   resources :authors, path: :membros
   resources :publications, path: :publicacoes
+  resources :books, path: :livros
 end

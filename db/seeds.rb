@@ -1,6 +1,7 @@
 puts "Clear all data"
 Author.destroy_all
 Publication.destroy_all
+Book.destroy_all
 puts "Creating seeds..."
 10.times do
   author = Author.create(
@@ -23,4 +24,15 @@ end
     # author_id: Author.all.sample.id
   )
   puts "Publication #{publication.title} created!"
+end
+
+
+4.times do
+  book = Book.create(
+    title: Faker::Book.title,
+    year: Faker::Number.between(from: 2000, to: 2020),
+    abstract: Faker::Lorem.paragraph,
+    cover_img: Faker::LoremFlickr.image,
+  )
+  puts "Book #{book.title} created!"
 end

@@ -2,7 +2,7 @@ class PublicationsController < ApplicationController
   before_action :set_publication, only: [:show, :edit, :update, :destroy]
 
   def index
-    @publications = Publication.order(:year).all
+    @publications = Publication.order(year: :desc).all
   end
 
   def show
