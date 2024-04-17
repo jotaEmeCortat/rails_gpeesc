@@ -11,17 +11,29 @@
                   <%= @author.name %>
                 </h4>
                 <p class="text-secondary mb-1">
-                  <%= @author.academic_degree %>
+                  <%= @author.qualification %>
                 </p>
-                <%= link_to "Editar membro", edit_author_path(@author), class: 'btn btn-primary' %>
-                  <%# <%= button_to 'Deactivate', deactivate_author_path(@author), method: :patch, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
+                <%= link_to "Editar membro" , edit_author_path(@author), class: 'btn btn-primary' %>
+                  <%# <%=button_to 'Deactivate' , deactivate_author_path(@author), method: :patch, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="col-md-8">
-        <%# publicações %>
+        <h2>Publicações</h2>
+        <div class="font-13 text-success mb-3">
+          <% @publications.each do |publication| %>
+            <%= link_to publication.title, publication_path(publication) %>
+          <% end %>
+
+          <h2>livro</h2>
+        <div class="font-13 text-success mb-3">
+          <% @books.each do |book| %>
+            <%= link_to book.title, publication_path(book) %>
+          <% end %>
+        </div>
+        </div>
       </div>
     </div>
   </div>

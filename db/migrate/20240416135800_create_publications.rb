@@ -5,7 +5,8 @@ class CreatePublications < ActiveRecord::Migration[7.0]
       t.integer :year
       t.text :abstract
       t.string :theme
-      t.string :category
+      t.string :publication_type
+      t.string :cover_img
 
       t.timestamps
     end

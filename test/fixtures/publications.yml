@@ -5,11 +5,13 @@ one:
   year: 1
   abstract: MyText
   theme: MyString
-  category: MyString
+  publication_type: MyString
+  cover_img: MyString
 
 two:
   title: MyString
   year: 1
   abstract: MyText
   theme: MyString
-  category: MyString
+  publication_type: MyString
+  cover_img: MyString

@@ -8,6 +8,13 @@ class AuthorsController < ApplicationController
   end
 
   def show
+    @publications = @author.publications.select do |publication|
+      publication.publication_type != 'livro' && publication.publication_type != 'cartilha'
+    end
+
+    @books = @author.publications.select do |publication|
+      publication.publication_type == 'livro'
+    end
   end
 
   def new
@@ -41,6 +48,6 @@ class AuthorsController < ApplicationController
   end
 
   def author_params
-    params.require(:author).permit(:name, :academic_degree, :lattes, :avatar_img, :member)
+    params.require(:author).permit(:name, :qualification, :lattes, :avatar_img, :member)
   end
 end

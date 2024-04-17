@@ -2,14 +2,14 @@
 
 one:
   name: MyString
-  academic_degree: MyString
+  qualification: MyString
   lattes: MyString
   avatar_img: MyString
   member: false
 
 two:
   name: MyString
-  academic_degree: MyString
+  qualification: MyString
   lattes: MyString
   avatar_img: MyString
   member: false

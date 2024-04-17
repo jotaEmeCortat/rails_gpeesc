@@ -10,28 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_16_094021) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_17_101721) do
   create_table "authors", force: :cascade do |t|
     t.string "name"
-    t.string "academic_degree"
+    t.string "qualification"
     t.string "lattes"
     t.string "avatar_img"
-    t.boolean "member", default: true
+    t.boolean "member"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["slug"], name: "index_authors_on_slug", unique: true
-  end
-
-  create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.integer "year"
-    t.text "abstract"
-    t.string "cover_img"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "slug"
-    t.index ["slug"], name: "index_books_on_slug", unique: true
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -50,11 +39,25 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_16_094021) do
     t.integer "year"
     t.text "abstract"
     t.string "theme"
-    t.string "category"
+    t.string "publication_type"
+    t.string "cover_img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["slug"], name: "index_publications_on_slug", unique: true
   end
 
+  create_table "repositories", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.integer "publication_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["author_id"], name: "index_repositories_on_author_id"
+    t.index ["publication_id"], name: "index_repositories_on_publication_id"
+    t.index ["slug"], name: "index_repositories_on_slug", unique: true
+  end
+
+  add_foreign_key "repositories", "authors"
+  add_foreign_key "repositories", "publications"
 end

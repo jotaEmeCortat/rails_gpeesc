@@ -1,18 +1,20 @@
 class PublicationsController < ApplicationController
   before_action :set_publication, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @publications = Publication.order(year: :desc).all
-  end
+  # def index
+  #   @publications = Publication.order(year: :desc).all
+  # end
 
   def show
   end
 
   def new
     @publication = Publication.new
+    @authors = Author.all
   end
 
   def edit
+    @authors = Author.all
   end
 
   def create
@@ -34,8 +36,13 @@ class PublicationsController < ApplicationController
   end
 
   def destroy
+    @publication.authors.clear
     @publication.destroy
-    redirect_to publications_url
+    if @publication.publication_type == "livro" || @publication.publication_type == "cartilha"
+      redirect_to livros_path, status: :see_other
+    else
+      redirect_to publicacoes_path, status: :see_other
+    end
   end
 
   private
@@ -44,6 +51,6 @@ class PublicationsController < ApplicationController
   end
 
   def publication_params
-    params.require(:publication).permit(:title, :year, :abstract, :theme, :category)
+    params.require(:publication).permit(:title, :year, :abstract, :theme, :publication_type, author_ids: [])
   end
 end

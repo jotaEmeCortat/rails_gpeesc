@@ -29,7 +29,13 @@
                           <%= publication.year %>
                         </span>
                       </h6>
+                      <p>
+                        <%= publication.publication_type %>
+                      </p>
                       <div class="font-13 text-success mb-3">
+                        <% publication.authors.each do |author| %>
+                          <%= link_to author.name, author_path(author) %>
+                        <% end %>
                         <%# Authors %>
                       </div>
                       <p class="mb-0 text-muted">

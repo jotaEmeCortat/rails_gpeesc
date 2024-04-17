@@ -9,12 +9,13 @@
     <%= f.input :abstract, label: 'Resumo' , as: :text, required: true, input_html: { class: 'form-control' } %>
   </div>
   <div class="form-group">
-      <%= f.input :category, label: 'Categoria' , collection: Publication::CATEGORIES, input_html: { class: 'form-control' } %>
+      <%= f.input :publication_type, label: 'Categoria' , collection: Publication::TYPES, input_html: { class: 'form-control' } %>
     </div>
-  <% if publication.category == 'artigo' %>
     <div class="form-group">
       <%= f.input :theme, label: 'Tema' , collection: Publication::THEMES, input_html: { class: 'form-control' } %>
     </div>
-  <% end %>
+    <div class="form-group">
+      <%= f.association :authors, as: :select, input_html: { multiple: true }  %>
+    </div>
     <%= f.button :submit, 'Update Publication' , class: 'btn btn-primary' %>
 <% end %>

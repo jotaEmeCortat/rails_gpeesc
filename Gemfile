@@ -71,6 +71,10 @@ group :test do
 
 end
 
+gem "sassc-rails"
 gem "simple_form"
 gem "faker"
 gem "friendly_id"
+gem "bootstrap", "~> 5.2"
+gem "font-awesome-sass", "~> 6.1"
+gem "autoprefixer-rails"

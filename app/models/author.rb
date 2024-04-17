@@ -1,5 +1,8 @@
 class Author < ApplicationRecord
-  DEGREES = %w[Associado Mestre Doutor Pós-Doutor]
+    QUALIFICATIONS = %w[Associado Mestre Doutor Pós-Doutor]
+  has_many :repositories
+  has_many :publications, through: :repositories, dependent: :destroy
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 

@@ -1,6 +1,8 @@
 class Publication < ApplicationRecord
   THEMES = %w[bullying corpo educação esporte idosos ]
-  CATEGORIES = %w[artigo dissertação tese]
+  TYPES = %w[artigo cartilha dissertação livro tese]
+  has_many :repositories
+  has_many :authors, through: :repositories
 
   extend FriendlyId
   friendly_id :title, use: :slugged
