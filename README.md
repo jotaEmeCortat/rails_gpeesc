@@ -5,10 +5,12 @@
 - add font-awesome
 - add autoprefixer
 - add sassc-rails
+- add cloudinary
+
 
 - create pages controller, routes and views
   rails g controller pages home publications books
-  
+
 - create author crud
   rails g model author name qualification lattes avatar_img member:boolean
 
@@ -17,3 +19,5 @@
 
 - create repository model
   rails g model repository author:references publication:references
+
+- Add Active Storage

@@ -2,12 +2,15 @@
 <%= link_to 'Novo membro', new_author_path, class: "btn btn-primary" %>
 <div class="row">
   <div class="col-md-6">
-    <% @authors.each_with_index do |author, index| %>
-      <% if index.even? %>
+    <% @authors.each do | author | %>
         <div class="panel-body">
           <ul class="basic-list image-list">
             <li>
-              <img src="<%= author.avatar_img %>" alt="Author's avatar" class="img">
+              <% if author.avatar_img.attached? %>
+                <%= cl_image_tag author.avatar_img.key, height: 100 %>
+              <% else %>
+                <img class="d-flex" src="<%= author.avatar_img %>" alt="">
+              <% end %>
               <b>
                 <%= link_to author.name, author_path(author) %>
               </b>
@@ -17,27 +20,6 @@
             </li>
           </ul>
         </div>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="col-md-6">
-    <% @authors.each_with_index do |author, index| %>
-      <% if index.odd? %>
-        <div class="panel-body">
-          <ul class="basic-list image-list">
-            <li>
-              <img src="<%= author.avatar_img %>" alt="Author's avatar" class="img">
-              <b>
-                <%= link_to author.name, author_path(author) %>
-              </b>
-              <span class="desc">
-                <%= author.qualification %>
-              </span>
-            </li>
-          </ul>
-        </div>
-      <% end %>
     <% end %>
   </div>
 </div>

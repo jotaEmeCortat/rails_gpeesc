@@ -2,7 +2,7 @@
   <%= f.input :name %>
   <%= f.input :qualification, collection: Author::QUALIFICATIONS %>
   <%= f.input :lattes %>
-  <%= f.input :avatar_img %>
+  <%= f.input :avatar_img, as: :file %>
   <%= f.input :member %>
   <%= f.button :submit %>
 <% end %>

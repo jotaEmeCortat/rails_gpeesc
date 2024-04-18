@@ -1,15 +1,28 @@
+require 'faker'
+require 'open-uri'
+
+def image_fetcher
+  URI.open(Faker::Avatar.image)
+  rescue
+  URI.open("https://robohash.org/sitsequiquia.png?size=300x300&set=set1")
+end
+
 puts "Clear all data"
 Author.destroy_all
 Publication.destroy_all
 puts "Creating seeds..."
-10.times do
+10.times do | index |
   author = Author.create(
     name: Faker::Book.author,
     qualification: Author::QUALIFICATIONS.sample,
     lattes: Faker::Internet.url,
-    avatar_img: Faker::Avatar.image,
+    # avatar_img: Faker::Avatar.image,
     member: true
   )
+  author.avatar_img.attach({
+     io: image_fetcher,
+     filename: "#{index}_faker_image.jpg"
+  })
   puts "Author #{author.name} created!"
 end
 
