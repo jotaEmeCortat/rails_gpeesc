@@ -10,11 +10,10 @@ class PublicationsController < ApplicationController
 
   def new
     @publication = Publication.new
-    @authors = Author.all
+    @publication.repositories.build
   end
 
   def edit
-    @authors = Author.all
   end
 
   def create
@@ -45,12 +44,20 @@ class PublicationsController < ApplicationController
     end
   end
 
+  # def available_authors
+  #   existing_author_ids = params[:existing_author_ids].split(',').map(&:to_i)
+  #   @available_authors = Author.where.not(id: existing_author_ids)
+  #   respond_to do |format|
+  #     format.json { render json: @available_authors }
+  #   end
+  # end
+
   private
   def set_publication
     @publication = Publication.friendly.find(params[:id])
   end
 
   def publication_params
-    params.require(:publication).permit(:title, :year, :abstract, :theme, :publication_type, author_ids: [])
+    params.require(:publication).permit(:title, :year, :abstract, :theme, :publication_type, repositories_attributes: [:id, :author_id, :_destroy])
   end
 end

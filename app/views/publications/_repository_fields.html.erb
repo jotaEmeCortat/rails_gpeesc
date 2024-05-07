@@ -1,0 +1,6 @@
+<!-- app/views/publications/_repository_fields.html.erb -->
+<div class="author-fields" data-new-record="<%= f.object.new_record? %>">
+  <%= f.input :author_id, collection: Author.all, label: "Author", include_blank: true, input_html: { data: { action: "change->author#filterAuthors" } } %>
+  <%= f.input :_destroy, as: :hidden %>
+  <%= link_to "Remove Author", '#', data: { action: "author#removeAuthor" } %>
+</div>
